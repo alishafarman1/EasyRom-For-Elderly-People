@@ -1,4 +1,4 @@
-import 'package:flutter_starter_app/src/services/remote/network_exceptions.dart';
+import 'package:easy_rom_prototype/src/services/remote/network_exceptions.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'api_result.freezed.dart';
