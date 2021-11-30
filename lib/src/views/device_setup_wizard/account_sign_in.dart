@@ -1,6 +1,8 @@
 import 'package:easy_rom_prototype/generated/images.asset.dart';
 import 'package:easy_rom_prototype/src/base/utils/utils.dart';
+import 'package:easy_rom_prototype/src/configs/app_setup.locator.dart';
 import 'package:easy_rom_prototype/src/services/local/navigation_service.dart';
+import 'package:easy_rom_prototype/src/services/local/speech_service.dart';
 import 'package:easy_rom_prototype/src/shared/app_text_field.dart';
 import 'package:easy_rom_prototype/src/shared/custom_keyboard.dart';
 import 'package:flutter/material.dart';
@@ -40,9 +42,10 @@ class AccountSignIn extends StatelessWidget {
             ElevatedButton(
                 onPressed: () async {
                   NavService.fingerprintSetup();
-                  speak("Setup your fingerprint now!");
+                  locator<SpeechService>().speak("Setup your fingerprint now!");
                   await Future.delayed(Duration(seconds: 2));
-                  speak("Touch your finger on the back of your device!");
+                  locator<SpeechService>()
+                      .speak("Touch your finger on the back of your device!");
                 },
                 child: Text("NEXT")),
             SizedBox(height: 30),

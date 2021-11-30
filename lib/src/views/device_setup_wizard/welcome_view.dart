@@ -1,4 +1,8 @@
+import 'package:easy_localization/easy_localization.dart';
+import 'package:easy_rom_prototype/src/configs/app_setup.locator.dart';
 import 'package:easy_rom_prototype/src/services/local/navigation_service.dart';
+import 'package:easy_rom_prototype/src/services/local/speech_service.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:easy_rom_prototype/src/base/utils/utils.dart';
 
@@ -11,6 +15,24 @@ class WelcomeView extends StatefulWidget {
 
 class _WelcomeViewState extends State<WelcomeView> {
   int selectedLang = 1;
+
+  @override
+  void initState() {
+    super.initState();
+    (() async {
+      await Future.delayed(Duration(milliseconds: 10));
+      var selectedLangIndex = Languages.values
+          .map((e) => describeEnum(e).split("_").first)
+          .toList()
+          .indexOf(EasyLocalization.of(context)?.currentLocale?.languageCode ??
+              'en');
+      setState(() {
+        selectedLang = selectedLangIndex == 0 ? 1 : 0;
+      });
+      locator<SpeechService>().selectedLanguage =
+          Languages.values[selectedLangIndex];
+    })();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +48,7 @@ class _WelcomeViewState extends State<WelcomeView> {
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
                 Text(
-                  'Welcome',
+                  'welcome'.tr(),
                   style: TextStyle(
                     fontFamily: 'Poppins',
                     fontSize: 37,
@@ -40,7 +62,7 @@ class _WelcomeViewState extends State<WelcomeView> {
               height: 75,
             ),
             Text(
-              'Please Choose your language',
+              'choose_language'.tr(),
               style: TextStyle(
                 fontFamily: 'Poppins',
                 fontSize: 15,
@@ -58,7 +80,9 @@ class _WelcomeViewState extends State<WelcomeView> {
                     child: GestureDetector(
                       onTap: () => setState(() {
                         selectedLang = 0;
-                        speak("You selected Urdu");
+                        locator<SpeechService>()
+                            .setLanguage(context, Languages.ur_PK);
+                        locator<SpeechService>().speak("selected_urdu".tr());
                       }),
                       child: Container(
                         height: 50,
@@ -90,7 +114,9 @@ class _WelcomeViewState extends State<WelcomeView> {
                     child: GestureDetector(
                       onTap: () => setState(() {
                         selectedLang = 1;
-                        speak("You selected English");
+                        locator<SpeechService>()
+                            .setLanguage(context, Languages.en_US);
+                        locator<SpeechService>().speak("You selected English");
                       }),
                       child: Container(
                           height: 50,
@@ -123,7 +149,7 @@ class _WelcomeViewState extends State<WelcomeView> {
             GestureDetector(
               onTap: () {
                 NavService.insertSim();
-                speak("Insert your sim card now!");
+                locator<SpeechService>().speak("insert_sim_now".tr());
               },
               child: Container(
                   width: context.screenSize().width / 2,
@@ -133,7 +159,7 @@ class _WelcomeViewState extends State<WelcomeView> {
                     color: const Color(0xff23DD67),
                   ),
                   child: Text(
-                    'Click to Continue',
+                    'click_to_continue'.tr(),
                     style: TextStyle(
                       fontFamily: 'Poppins',
                       fontSize: 14,
@@ -146,7 +172,7 @@ class _WelcomeViewState extends State<WelcomeView> {
             Spacer(),
             GestureDetector(
               onTap: () {
-                speak("You just clicked the emergency call button!");
+                locator<SpeechService>().speak('emergency_call_speak'.tr());
               },
               child: Container(
                   width: context.screenSize().width / 2,
@@ -156,7 +182,7 @@ class _WelcomeViewState extends State<WelcomeView> {
                     color: const Color(0xffEB1111),
                   ),
                   child: Text(
-                    'Emergency Call',
+                    'emergency_call'.tr(),
                     style: TextStyle(
                       fontFamily: 'Poppins',
                       fontSize: 14,

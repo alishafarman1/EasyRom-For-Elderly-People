@@ -1,6 +1,7 @@
 import 'package:easy_rom_prototype/src/services/local/auth_service.dart';
 import 'package:easy_rom_prototype/src/services/local/connectivity_service.dart';
 import 'package:easy_rom_prototype/src/services/local/keyboard_service.dart';
+import 'package:easy_rom_prototype/src/services/local/speech_service.dart';
 import 'package:easy_rom_prototype/src/services/remote/api_service.dart';
 import 'package:easy_rom_prototype/src/views/device_setup_wizard/account_sign_in.dart';
 import 'package:easy_rom_prototype/src/views/device_setup_wizard/connect_wifi.dart';
@@ -35,6 +36,7 @@ import 'package:stacked_services/stacked_services.dart';
     LazySingleton(classType: ConnectivityService),
     LazySingleton(classType: KeyboardService),
     LazySingleton(classType: ApiService),
+    LazySingleton(classType: SpeechService),
   ],
 )
 class AppSetup {

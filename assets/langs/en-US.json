@@ -1,0 +1,21 @@
+{
+    "welcome":"Welcome",
+    "selected_urdu":"آپ نے اردو کا انتخاب کیا۔",
+    "selected_english":"You selected English",
+    "click_to_continue":"Click to Continue",
+    "emergency_call":"Emergency Call",
+    "emergency_call_speak":"You just clicked the emergency call button!",
+    "choose_language":"Please Choose your language",
+    "insert_sim_now":"Insert your sim card now!",
+    "insert_sim":"Please Insert your sim",
+    "now_connect_your_wifi_network":"Now connect your wifi network to access internet!",
+    "skip":"Skip",
+    "connecting_network":"Connecting network {}",
+    "google_account_sin_in":"You can now sign in with your google account!",
+    "connecting_to_wifi_network":"Connecting to your wifi network",
+
+    "unlocking_screen":"Unlocking screen",
+    "locking_screen": "Locking Screen",
+    "opening_app": "Opening {}",
+    "temperature": "Right now Weather is 29 degree celsius"
+}

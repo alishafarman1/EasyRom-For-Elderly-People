@@ -1,6 +1,9 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:easy_rom_prototype/generated/images.asset.dart';
 import 'package:easy_rom_prototype/src/base/utils/utils.dart';
+import 'package:easy_rom_prototype/src/configs/app_setup.locator.dart';
 import 'package:easy_rom_prototype/src/services/local/navigation_service.dart';
+import 'package:easy_rom_prototype/src/services/local/speech_service.dart';
 import 'package:flutter/material.dart';
 
 class InsertSimView extends StatelessWidget {
@@ -20,7 +23,7 @@ class InsertSimView extends StatelessWidget {
             ),
             SizedBox(height: 20),
             Text(
-              'Please Insert your sim',
+              "insert_sim".tr(),
               style: TextStyle(
                 fontFamily: 'Poppins',
                 fontSize: 20,
@@ -33,7 +36,8 @@ class InsertSimView extends StatelessWidget {
             GestureDetector(
               onTap: () {
                 NavService.connectWifi();
-                speak("Now connect your wifi network to access internet!");
+                locator<SpeechService>()
+                    .speak("now_connect_your_wifi_network".tr());
               },
               child: Container(
                   width: context.screenSize().width / 2,
@@ -43,14 +47,14 @@ class InsertSimView extends StatelessWidget {
                     color: const Color(0xff23DD67),
                   ),
                   child: Text(
-                    'Click to Continue',
+                    'click_to_continue'.tr(),
                     style: TextStyle(
                       fontFamily: 'Poppins',
                       fontSize: 14,
                       color: const Color(0xffffffff),
                       fontWeight: FontWeight.w700,
                     ),
-                    textAlign: TextAlign.left,
+                    textAlign: TextAlign.center,
                   )),
             ),
           ],

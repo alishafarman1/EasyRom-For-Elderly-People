@@ -1,6 +1,8 @@
 import 'package:easy_rom_prototype/generated/images.asset.dart';
 import 'package:easy_rom_prototype/src/base/utils/utils.dart';
+import 'package:easy_rom_prototype/src/configs/app_setup.locator.dart';
 import 'package:easy_rom_prototype/src/services/local/navigation_service.dart';
+import 'package:easy_rom_prototype/src/services/local/speech_service.dart';
 import 'package:easy_rom_prototype/src/shared/app_text_field.dart';
 import 'package:easy_rom_prototype/src/shared/custom_keyboard.dart';
 import 'package:flutter/material.dart';
@@ -13,7 +15,7 @@ class RePasswordScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     //return KeyboardDemo();
-    speak("Re-Enter your password to complete setup!");
+    locator<SpeechService>().speak("Re-Enter your password to complete setup!");
     return Scaffold(
       resizeToAvoidBottomInset: false,
       body: SafeArea(
@@ -42,7 +44,8 @@ class RePasswordScreen extends StatelessWidget {
             ElevatedButton(
                 onPressed: () {
                   NavService.launcher();
-                  speak("Welcome to your new smart phone");
+                  locator<SpeechService>()
+                      .speak("Welcome to your new smart phone");
                 },
                 child: Text("NEXT")),
             SizedBox(height: 10),

@@ -1,5 +1,8 @@
+import 'package:easy_localization/src/public_ext.dart';
 import 'package:easy_rom_prototype/generated/images.asset.dart';
 import 'package:easy_rom_prototype/src/base/utils/utils.dart';
+import 'package:easy_rom_prototype/src/configs/app_setup.locator.dart';
+import 'package:easy_rom_prototype/src/services/local/speech_service.dart';
 import 'package:easy_rom_prototype/src/views/lockscreen.dart';
 import 'package:flutter/material.dart';
 
@@ -27,7 +30,7 @@ class _LauncherState extends State<Launcher> {
               secondChild: Lockscreen(
                 onUnlock: () => setState(() {
                   crossFadeState = CrossFadeState.showFirst;
-                  speak("Unlocking screen");
+                  locator<SpeechService>().speak("unlocking_screen".tr());
                 }),
               ),
               firstChild: SizedBox()),
@@ -43,7 +46,7 @@ class _LauncherState extends State<Launcher> {
           Row(
             children: [
               _iconCard(
-                  "Right now Weather is 29 degree celcius",
+                  "temperature".tr(),
                   Column(
                     children: [
                       Image.asset(Images.weather),
@@ -92,7 +95,7 @@ class _LauncherState extends State<Launcher> {
                     ),
                     SizedBox(height: 5),
                     Text(
-                      'sunday 7 2021',
+                      'sunday 7 2021' + ("locking_screen".tr()),
                       style: TextStyle(
                         fontFamily: 'Poppins',
                         fontSize: 12,
@@ -149,7 +152,7 @@ class _LauncherState extends State<Launcher> {
   Widget _iconCard(String message, Widget child, {Function? onTap}) => Expanded(
         child: GestureDetector(
           onTap: () {
-            speak(message);
+            locator<SpeechService>().speak(message);
             onTap?.call();
           },
           child: Container(
@@ -165,7 +168,9 @@ class _LauncherState extends State<Launcher> {
       );
 
   Widget _appIcon(String appName, String icon, {Function? onTap}) => _iconCard(
-      appName == "Lock Screen" ? "Locking Screen" : "Openning $appName",
+      appName == "Lock Screen"
+          ? "locking_screen".tr()
+          : "opening_app".tr(args: [appName]),
       Image.asset(icon),
       onTap: onTap);
 }

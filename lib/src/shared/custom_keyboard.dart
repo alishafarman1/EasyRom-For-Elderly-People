@@ -1,6 +1,8 @@
 import 'dart:math';
 
 import 'package:easy_rom_prototype/src/base/utils/utils.dart';
+import 'package:easy_rom_prototype/src/configs/app_setup.locator.dart';
+import 'package:easy_rom_prototype/src/services/local/speech_service.dart';
 import 'package:emoji_picker/emoji_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:speech_to_text/speech_to_text.dart' as stt;
@@ -66,7 +68,7 @@ class CustomKeyboard extends StatefulWidget {
 
 class _CustomKeyboardState extends State<CustomKeyboard> {
   void _insertText(String myText) {
-    speak(myText);
+    locator<SpeechService>().speak(myText);
     final text = widget.controller.text;
     final textSelection = widget.controller.selection;
     final newText = text.replaceRange(
@@ -236,7 +238,7 @@ class _CustomKeyboardState extends State<CustomKeyboard> {
                       TextPosition(
                           offset: widget.controller.selection.start - 1));
 
-                  speak(
+                  locator<SpeechService>().speak(
                       "Cursor is now after ${widget.controller.text.substring(0, widget.controller.selection.start).split("").join(" ")}");
                 },
                 child: Icon(Icons.chevron_left, color: Colors.white, size: 40)),
@@ -250,7 +252,7 @@ class _CustomKeyboardState extends State<CustomKeyboard> {
                         TextPosition(
                             offset: widget.controller.selection.end + 1));
 
-                    speak(
+                    locator<SpeechService>().speak(
                         "Cursor is now after ${widget.controller.text.substring(0, widget.controller.selection.end).split("").join(" ")}");
                   }
                 },
@@ -292,7 +294,8 @@ class _CustomKeyboardState extends State<CustomKeyboard> {
             text: 'Caps',
             onTextInput: (text) => setState(() {
               isCaps = !isCaps;
-              speak(isCaps ? 'Caps Letters On' : 'Caps Letters Off');
+              locator<SpeechService>()
+                  .speak(isCaps ? 'Caps Letters On' : 'Caps Letters Off');
             }),
           ),
           TextKey(
@@ -302,7 +305,7 @@ class _CustomKeyboardState extends State<CustomKeyboard> {
             flex: 4,
             onTextInput: (text) {
               _textInputHandler(text);
-              speak("Space");
+              locator<SpeechService>().speak("Space");
             },
           ),
           BackspaceKey(
@@ -310,7 +313,7 @@ class _CustomKeyboardState extends State<CustomKeyboard> {
             flex: 2,
             onBackspace: () {
               _backspace();
-              speak("Back Space");
+              locator<SpeechService>().speak("Back Space");
             },
           ),
           TextKey(

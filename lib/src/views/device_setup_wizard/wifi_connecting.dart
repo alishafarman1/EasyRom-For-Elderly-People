@@ -1,6 +1,8 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:easy_rom_prototype/generated/images.asset.dart';
-import 'package:easy_rom_prototype/src/base/utils/utils.dart';
+import 'package:easy_rom_prototype/src/configs/app_setup.locator.dart';
 import 'package:easy_rom_prototype/src/services/local/navigation_service.dart';
+import 'package:easy_rom_prototype/src/services/local/speech_service.dart';
 import 'package:flutter/material.dart';
 
 class WifiConnecting extends StatefulWidget {
@@ -18,10 +20,10 @@ class _WifiConnectingState extends State<WifiConnecting> {
   }
 
   moveForward() async {
-    await Future.delayed(Duration(seconds: 2));
+    await Future.delayed(Duration(seconds: 6));
     NavService.accountSignIn();
-    speak("Connected to Internet!");
-    speak("You can now sign in with your google account!");
+    locator<SpeechService>().speak("Connected to Internet!");
+    locator<SpeechService>().speak("google_account_sin_in".tr());
   }
 
   @override
@@ -41,7 +43,7 @@ class _WifiConnectingState extends State<WifiConnecting> {
               height: 50,
             ),
             Text(
-              'Connecting to your wifi network',
+              'connecting_to_wifi_network'.tr(),
               style: TextStyle(
                 fontFamily: 'Poppins',
                 fontSize: 15,

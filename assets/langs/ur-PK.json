@@ -1,0 +1,21 @@
+{
+    "welcome":"خوش آمدید",
+    "selected_urdu":"آپ نے اردو کا انتخاب کیا۔",
+    "selected_english":"آپ نے انگریزی کا انتخاب کیا۔",
+    "click_to_continue":"جاری رکھنے کے لیے کلک کریں۔",
+    "emergency_call":"ہنگامی رابطہ",
+    "emergency_call_speak":"آپ نے ابھی ایمرجنسی کال کے بٹن پر کلک کیا ہے!",
+    "choose_language":"براہ کرم اپنی زبان کا انتخاب کریں۔",
+    "insert_sim_now":"اپنا سم کارڈ ابھی داخل کریں!",
+    "insert_sim":"براہ کرم اپنا سم داخل کریں۔",
+    "now_connect_your_wifi_network":"اب انٹرنیٹ تک رسائی کے لیے اپنے وائی فائی نیٹ ورک سے جڑیں!",
+    "skip":"چھوڑ دو",
+    "connecting_network":"براہ کرم انتظار کریں، نیٹ ورک {} کنیکٹ ہو رہا ہے۔",
+    "google_account_sin_in":"اب آپ اپنے گوگل اکاؤنٹ سے سائن ان کر سکتے ہیں!",
+    "connecting_to_wifi_network":"آپ کے وائی فائی نیٹ ورک سے منسلک ہو رہا ہے۔",
+
+    "unlocking_screen":"سکرین کھول دی گئی ہے",
+    "locking_screen" :"سکرین بند",
+    "opening_app":"۔{} کھول رہا ہے۔",
+    "temperature": "اس وقت موسم 29 ڈگری سیلسیس ہے۔"
+}   

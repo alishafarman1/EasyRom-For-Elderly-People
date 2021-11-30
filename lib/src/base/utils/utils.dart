@@ -14,10 +14,3 @@ extension UIExt on BuildContext {
     if (!currentFocus.hasPrimaryFocus) currentFocus.unfocus();
   }
 }
-
-speak(String text) async {
-  FlutterTts flutterTts = FlutterTts();
-  await flutterTts.awaitSpeakCompletion(false);
-  await flutterTts.awaitSynthCompletion(false);
-  await flutterTts.speak(text);
-}
