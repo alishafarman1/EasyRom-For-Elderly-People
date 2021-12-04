@@ -1,6 +1,3 @@
-import 'dart:math';
-
-import 'package:easy_rom_prototype/src/base/utils/utils.dart';
 import 'package:easy_rom_prototype/src/configs/app_setup.locator.dart';
 import 'package:easy_rom_prototype/src/services/local/speech_service.dart';
 import 'package:emoji_picker/emoji_picker.dart';

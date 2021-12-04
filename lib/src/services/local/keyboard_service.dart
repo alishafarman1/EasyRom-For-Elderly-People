@@ -3,6 +3,7 @@ import 'package:stacked/stacked.dart';
 
 class KeyboardService with ReactiveServiceMixin {
   ReactiveValue<bool> _isKeyboardVisible = ReactiveValue<bool>(false);
+
   bool get isKeyboardVisible => _isKeyboardVisible.value;
 
   KeyboardService() {

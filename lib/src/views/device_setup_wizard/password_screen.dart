@@ -1,5 +1,4 @@
 import 'package:easy_rom_prototype/generated/images.asset.dart';
-import 'package:easy_rom_prototype/src/base/utils/utils.dart';
 import 'package:easy_rom_prototype/src/configs/app_setup.locator.dart';
 import 'package:easy_rom_prototype/src/services/local/navigation_service.dart';
 import 'package:easy_rom_prototype/src/services/local/speech_service.dart';

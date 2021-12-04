@@ -1,10 +1,10 @@
 import 'package:easy_localization/easy_localization.dart';
+import 'package:easy_rom_prototype/src/base/utils/utils.dart';
 import 'package:easy_rom_prototype/src/configs/app_setup.locator.dart';
 import 'package:easy_rom_prototype/src/services/local/navigation_service.dart';
 import 'package:easy_rom_prototype/src/services/local/speech_service.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:easy_rom_prototype/src/base/utils/utils.dart';
 
 class WelcomeView extends StatefulWidget {
   const WelcomeView({Key? key}) : super(key: key);

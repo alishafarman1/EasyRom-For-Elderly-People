@@ -1,8 +1,8 @@
-import 'package:flutter/material.dart';
+import 'package:easy_localization/easy_localization.dart' as el;
 import 'package:easy_rom_prototype/src/base/utils/constants.dart';
 import 'package:easy_rom_prototype/src/services/local/navigation_service.dart';
 import 'package:easy_rom_prototype/src/views/device_setup_wizard/welcome_view.dart';
-import 'package:easy_localization/easy_localization.dart' as el;
+import 'package:flutter/material.dart';
 
 class AppView extends StatelessWidget {
   // This widget is the root of your application.

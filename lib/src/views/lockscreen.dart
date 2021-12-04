@@ -1,6 +1,7 @@
+import 'dart:ui' as ui;
+
 import 'package:easy_rom_prototype/generated/images.asset.dart';
 import 'package:flutter/material.dart';
-import 'dart:ui' as ui;
 
 class Lockscreen extends StatelessWidget {
   final Function onUnlock;

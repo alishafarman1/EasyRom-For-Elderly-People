@@ -8,6 +8,7 @@ enum Languages { en_US, ur_PK }
 class SpeechService {
   FlutterTts flutterTts = FlutterTts();
   Languages selectedLanguage = Languages.en_US;
+
   String get languageTTSstr =>
       describeEnum(selectedLanguage).replaceFirst("_", "-");
 

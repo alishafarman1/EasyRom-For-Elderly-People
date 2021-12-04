@@ -3,6 +3,7 @@ import 'package:stacked/stacked.dart';
 
 class ConnectivityService with ReactiveServiceMixin {
   ReactiveValue<bool> _isInternetConnected = ReactiveValue<bool>(true);
+
   bool get isInternetConnected => _isInternetConnected.value;
 
   ConnectivityService() {

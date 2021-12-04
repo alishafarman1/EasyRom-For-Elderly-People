@@ -57,6 +57,7 @@ class StackedRouter extends RouterBase {
     RouteDef(Routes.rePasswordScreen, page: RePasswordScreen),
     RouteDef(Routes.launcher, page: Launcher),
   ];
+
   @override
   Map<Type, StackedRouteFactory> get pagesMap => _pagesMap;
   final _pagesMap = <Type, StackedRouteFactory>{
@@ -133,17 +134,20 @@ class StackedRouter extends RouterBase {
 /// AccountSignIn arguments holder class
 class AccountSignInArguments {
   final Key? key;
+
   AccountSignInArguments({this.key});
 }
 
 /// PasswordScreen arguments holder class
 class PasswordScreenArguments {
   final Key? key;
+
   PasswordScreenArguments({this.key});
 }
 
 /// RePasswordScreen arguments holder class
 class RePasswordScreenArguments {
   final Key? key;
+
   RePasswordScreenArguments({this.key});
 }
