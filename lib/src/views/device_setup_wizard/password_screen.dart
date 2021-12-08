@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:easy_rom_prototype/generated/images.asset.dart';
 import 'package:easy_rom_prototype/src/configs/app_setup.locator.dart';
 import 'package:easy_rom_prototype/src/services/local/navigation_service.dart';
@@ -14,7 +15,7 @@ class PasswordScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     //return KeyboardDemo();
-    locator<SpeechService>().speak("Enter your password to complete setup!");
+    locator<SpeechService>().speak("enter_your_password_title".tr());
     return Scaffold(
       resizeToAvoidBottomInset: false,
       body: SafeArea(
@@ -23,7 +24,7 @@ class PasswordScreen extends StatelessWidget {
             SizedBox(height: 40),
             Center(
               child: Text(
-                'Enter your Password',
+                'enter_your_password'.tr(),
                 style: TextStyle(
                   fontFamily: 'Poppins',
                   fontSize: 20,
@@ -38,10 +39,11 @@ class PasswordScreen extends StatelessWidget {
             SizedBox(height: 30),
             AppTextField(
                 controller: _controller,
-                placeholder: "Tap to enter your password!"),
+                placeholder: "tap_to_enter_password".tr()),
             ElevatedButton(
-                onPressed: NavService.rePasswordScreen, child: Text("NEXT")),
-            SizedBox(height: 10),
+                onPressed: NavService.rePasswordScreen,
+                child: Text("next".tr())),
+            SizedBox(height: 0),
             Spacer(),
             CustomKeyboard(controller: _controller)
           ],

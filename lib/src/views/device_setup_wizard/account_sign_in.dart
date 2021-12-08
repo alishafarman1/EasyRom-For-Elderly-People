@@ -5,6 +5,7 @@ import 'package:easy_rom_prototype/src/services/local/speech_service.dart';
 import 'package:easy_rom_prototype/src/shared/app_text_field.dart';
 import 'package:easy_rom_prototype/src/shared/custom_keyboard.dart';
 import 'package:flutter/material.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 class AccountSignIn extends StatelessWidget {
   TextEditingController _controller = TextEditingController();
@@ -22,7 +23,7 @@ class AccountSignIn extends StatelessWidget {
             SizedBox(height: 50),
             Center(
               child: Text(
-                'Add your account',
+                'add_your_account'.tr(),
                 style: TextStyle(
                   fontFamily: 'Poppins',
                   fontSize: 20,
@@ -37,17 +38,17 @@ class AccountSignIn extends StatelessWidget {
             SizedBox(height: 30),
             AppTextField(
                 controller: _controller,
-                placeholder: "Tap to enter your gmail accoung id here!"),
+                placeholder: "tap_to_enter_gmail_id".tr()),
             ElevatedButton(
                 onPressed: () async {
                   NavService.fingerprintSetup();
-                  locator<SpeechService>().speak("Setup your fingerprint now!");
+                  locator<SpeechService>().speak("setup_fingerprint_now".tr());
                   await Future.delayed(Duration(seconds: 2));
                   locator<SpeechService>()
-                      .speak("Touch your finger on the back of your device!");
+                      .speak("touch_your_finer_at_the_back".tr());
                 },
-                child: Text("NEXT")),
-            SizedBox(height: 30),
+                child: Text("next".tr())),
+            SizedBox(height: 10),
             Spacer(),
             CustomKeyboard(controller: _controller)
           ],

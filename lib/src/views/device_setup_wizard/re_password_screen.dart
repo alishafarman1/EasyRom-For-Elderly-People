@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:easy_rom_prototype/generated/images.asset.dart';
 import 'package:easy_rom_prototype/src/configs/app_setup.locator.dart';
 import 'package:easy_rom_prototype/src/services/local/navigation_service.dart';
@@ -14,7 +15,7 @@ class RePasswordScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     //return KeyboardDemo();
-    locator<SpeechService>().speak("Re-Enter your password to complete setup!");
+    locator<SpeechService>().speak("re_enter_password_title".tr());
     return Scaffold(
       resizeToAvoidBottomInset: false,
       body: SafeArea(
@@ -23,7 +24,7 @@ class RePasswordScreen extends StatelessWidget {
             SizedBox(height: 40),
             Center(
               child: Text(
-                'Re enter your Password',
+                're_enter_password'.tr(),
                 style: TextStyle(
                   fontFamily: 'Poppins',
                   fontSize: 20,
@@ -39,15 +40,14 @@ class RePasswordScreen extends StatelessWidget {
             AppTextField(
                 isPassword: true,
                 controller: _controller,
-                placeholder: "Tap to re-enter your password!"),
+                placeholder: "tap_to_re_enter".tr()),
             ElevatedButton(
                 onPressed: () {
                   NavService.launcher();
-                  locator<SpeechService>()
-                      .speak("Welcome to your new smart phone");
+                  locator<SpeechService>().speak("welcome_to_new_phone".tr());
                 },
-                child: Text("NEXT")),
-            SizedBox(height: 10),
+                child: Text("next".tr())),
+            SizedBox(height: 0),
             Spacer(),
             CustomKeyboard(controller: _controller)
           ],
