@@ -3,6 +3,8 @@ import 'package:easy_rom_prototype/src/services/local/connectivity_service.dart'
 import 'package:easy_rom_prototype/src/services/local/keyboard_service.dart';
 import 'package:easy_rom_prototype/src/services/local/speech_service.dart';
 import 'package:easy_rom_prototype/src/services/remote/api_service.dart';
+import 'package:easy_rom_prototype/src/views/apps/dialer_app.dart';
+import 'package:easy_rom_prototype/src/views/apps/messages_app.dart';
 import 'package:easy_rom_prototype/src/views/device_setup_wizard/account_sign_in.dart';
 import 'package:easy_rom_prototype/src/views/device_setup_wizard/connect_wifi.dart';
 import 'package:easy_rom_prototype/src/views/device_setup_wizard/fingerprint_setup.dart';
@@ -26,6 +28,8 @@ import 'package:stacked_services/stacked_services.dart';
     MaterialRoute(page: PasswordScreen),
     MaterialRoute(page: RePasswordScreen),
     MaterialRoute(page: Launcher),
+    MaterialRoute(page: MessagesApp),
+    MaterialRoute(page: DialerApp),
   ],
   dependencies: [
     // Lazy singletons

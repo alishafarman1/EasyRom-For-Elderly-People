@@ -46,4 +46,10 @@ class NavService {
 
   static Future<dynamic>? launcher({dynamic arguments}) => _navigationService!
       .clearStackAndShow(Routes.launcher, arguments: arguments);
+
+  static Future<dynamic>? messagesApp({dynamic arguments}) =>
+      _navigationService!.navigateTo(Routes.messagesApp, arguments: arguments);
+
+  static Future<dynamic>? dialerApp({dynamic arguments}) =>
+      _navigationService!.navigateTo(Routes.dialerApp, arguments: arguments);
 }

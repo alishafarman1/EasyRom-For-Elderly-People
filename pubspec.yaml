@@ -36,6 +36,7 @@ dependencies:
   emoji_picker: ^0.1.0
   speech_to_text: ^5.1.1
   easy_localization: ^3.0.0
+  external_app_launcher: ^2.0.2
 
 dependency_overrides:
   shared_preferences: ^2.0.0-nullsafety

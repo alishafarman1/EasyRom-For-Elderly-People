@@ -1,9 +1,11 @@
 import 'package:easy_localization/src/public_ext.dart';
 import 'package:easy_rom_prototype/generated/images.asset.dart';
 import 'package:easy_rom_prototype/src/configs/app_setup.locator.dart';
+import 'package:easy_rom_prototype/src/services/local/navigation_service.dart';
 import 'package:easy_rom_prototype/src/services/local/speech_service.dart';
 import 'package:easy_rom_prototype/src/views/lockscreen.dart';
 import 'package:flutter/material.dart';
+import 'package:external_app_launcher/external_app_launcher.dart';
 
 class Launcher extends StatefulWidget {
   const Launcher({Key? key}) : super(key: key);
@@ -111,24 +113,32 @@ class _LauncherState extends State<Launcher> {
           Spacer(),
           Row(
             children: [
-              _appIcon("Google Chrome", Images.chrome),
-              _appIcon("Facebook", Images.facebook),
-              _appIcon("Play Store", Images.playstore),
+              _appIcon("Google Chrome", Images.chrome,
+                  packageName: "com.android.chrome"),
+              _appIcon("Facebook", Images.facebook,
+                  packageName: "com.facebook.katana"),
+              _appIcon("Play Store", Images.playstore,
+                  packageName: "com.android.vending"),
             ],
           ),
           SizedBox(height: 20),
           Row(
             children: [
-              _appIcon("Twitter", Images.twitter),
-              _appIcon("Instagram", Images.instagram),
-              _appIcon("Calculator", Images.calculator),
+              _appIcon("Twitter", Images.twitter,
+                  packageName: "com.twitter.android"),
+              _appIcon("Instagram", Images.instagram,
+                  packageName: "com.instagram.android"),
+              _appIcon("Calculator", Images.calculator,
+                  packageName: "com.google.android.calculator"),
             ],
           ),
           SizedBox(height: 20),
           Row(
             children: [
-              _appIcon("Calendar", Images.calendar),
-              _appIcon("Settings", Images.settings),
+              _appIcon("Calendar", Images.calendar,
+                  packageName: "com.google.android.calendar"),
+              _appIcon("Settings", Images.settings,
+                  packageName: "com.android.settings"),
               _appIcon("Lock Screen", Images.padlock, onTap: () {
                 setState(() {
                   crossFadeState = CrossFadeState.showSecond;
@@ -139,9 +149,12 @@ class _LauncherState extends State<Launcher> {
           Spacer(),
           Row(
             children: [
-              _appIcon("Sms", Images.sms),
-              _appIcon("Phone", Images.phone),
-              _appIcon("Camera", Images.camera),
+              _appIcon("Sms", Images.sms, onTap: NavService.messagesApp),
+              _appIcon("Phone", Images.phone,
+                  onTap: NavService.dialerApp,
+                  packageName: "com.google.android.dialer"),
+              _appIcon("Camera", Images.camera,
+                  packageName: "com.google.android.GoogleCamera"),
             ],
           ),
           SizedBox(height: 30)
@@ -166,10 +179,16 @@ class _LauncherState extends State<Launcher> {
         ),
       );
 
-  Widget _appIcon(String appName, String icon, {Function? onTap}) => _iconCard(
-      appName == "Lock Screen"
-          ? "locking_screen".tr()
-          : "opening_app".tr(args: [appName]),
-      Image.asset(icon),
-      onTap: onTap);
+  Widget _appIcon(String appName, String icon,
+          {Function? onTap, String? packageName}) =>
+      _iconCard(
+          appName == "Lock Screen"
+              ? "locking_screen".tr()
+              : "opening_app".tr(args: [appName]),
+          Image.asset(icon),
+          onTap: packageName != null
+              ? () {
+                  LaunchApp.openApp(androidPackageName: packageName);
+                }
+              : onTap);
 }

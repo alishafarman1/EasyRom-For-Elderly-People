@@ -10,6 +10,8 @@ import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked/stacked_annotations.dart';
 
+import '../views/apps/dialer_app.dart';
+import '../views/apps/messages_app.dart';
 import '../views/device_setup_wizard/account_sign_in.dart';
 import '../views/device_setup_wizard/connect_wifi.dart';
 import '../views/device_setup_wizard/fingerprint_setup.dart';
@@ -30,6 +32,8 @@ class Routes {
   static const String passwordScreen = '/password-screen';
   static const String rePasswordScreen = '/re-password-screen';
   static const String launcher = '/Launcher';
+  static const String messagesApp = '/messages-app';
+  static const String dialerApp = '/dialer-app';
   static const all = <String>{
     welcomeView,
     insertSimView,
@@ -40,6 +44,8 @@ class Routes {
     passwordScreen,
     rePasswordScreen,
     launcher,
+    messagesApp,
+    dialerApp,
   };
 }
 
@@ -56,8 +62,9 @@ class StackedRouter extends RouterBase {
     RouteDef(Routes.passwordScreen, page: PasswordScreen),
     RouteDef(Routes.rePasswordScreen, page: RePasswordScreen),
     RouteDef(Routes.launcher, page: Launcher),
+    RouteDef(Routes.messagesApp, page: MessagesApp),
+    RouteDef(Routes.dialerApp, page: DialerApp),
   ];
-
   @override
   Map<Type, StackedRouteFactory> get pagesMap => _pagesMap;
   final _pagesMap = <Type, StackedRouteFactory>{
@@ -124,6 +131,18 @@ class StackedRouter extends RouterBase {
         settings: data,
       );
     },
+    MessagesApp: (data) {
+      return MaterialPageRoute<MaterialRoute<dynamic>>(
+        builder: (context) => const MessagesApp(),
+        settings: data,
+      );
+    },
+    DialerApp: (data) {
+      return MaterialPageRoute<MaterialRoute<dynamic>>(
+        builder: (context) => const DialerApp(),
+        settings: data,
+      );
+    },
   };
 }
 
@@ -134,20 +153,17 @@ class StackedRouter extends RouterBase {
 /// AccountSignIn arguments holder class
 class AccountSignInArguments {
   final Key? key;
-
   AccountSignInArguments({this.key});
 }
 
 /// PasswordScreen arguments holder class
 class PasswordScreenArguments {
   final Key? key;
-
   PasswordScreenArguments({this.key});
 }
 
 /// RePasswordScreen arguments holder class
 class RePasswordScreenArguments {
   final Key? key;
-
   RePasswordScreenArguments({this.key});
 }
