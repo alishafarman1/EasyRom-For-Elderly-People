@@ -17,9 +17,9 @@ class InsertSimView extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Image.asset(
-              Images.sim,
-              width: 100,
-              height: 100,
+              Images.simInstructions,
+              width: MediaQuery.of(context).size.width,
+              height: 300,
             ),
             SizedBox(height: 20),
             Text(

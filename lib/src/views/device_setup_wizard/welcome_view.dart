@@ -166,7 +166,7 @@ class _WelcomeViewState extends State<WelcomeView> {
                       color: const Color(0xffffffff),
                       fontWeight: FontWeight.w700,
                     ),
-                    textAlign: TextAlign.left,
+                    textAlign: TextAlign.center,
                   )),
             ),
             Spacer(),

@@ -6,6 +6,7 @@ class Images {
   static String get sms => "assets/images/sms.png";
   static String get settings => "assets/images/settings.png";
   static String get instagram => "assets/images/instagram.png";
+  static String get simInstructions => "assets/images/sim_instructions.gif";
   static String get page1 => "assets/images/Page-1.png";
   static String get weather => "assets/images/weather.png";
   static String get sim => "assets/images/sim.png";
