@@ -29,6 +29,8 @@
     "re_enter_password":"Re enter your Password",
     "messages_app":"Messages App",
     "enter_your_message_here":"Enter your message here!",
+    "sent":"Message sent",
+    "unlock_screen":"Unlock\nScreen",
 
     "unlocking_screen":"Unlocking screen",
     "locking_screen": "Locking Screen",

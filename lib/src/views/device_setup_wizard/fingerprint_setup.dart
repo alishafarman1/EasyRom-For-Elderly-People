@@ -1,6 +1,8 @@
 import 'package:easy_rom_prototype/generated/images.asset.dart';
 import 'package:easy_rom_prototype/src/base/utils/utils.dart';
+import 'package:easy_rom_prototype/src/configs/app_setup.locator.dart';
 import 'package:easy_rom_prototype/src/services/local/navigation_service.dart';
+import 'package:easy_rom_prototype/src/services/local/speech_service.dart';
 import 'package:flutter/material.dart';
 import 'package:easy_localization/easy_localization.dart';
 
@@ -9,6 +11,7 @@ class FingerprintSetup extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    speak();
     return Scaffold(
       body: Column(
         children: [
@@ -46,13 +49,13 @@ class FingerprintSetup extends StatelessWidget {
               child: Image.asset(Images.biometric)),
           Spacer(),
           GestureDetector(
-            onTap: NavService.connectWifi,
+            onTap: NavService.passwordScreen,
             child: Container(
                 width: context.screenSize().width / 2,
                 height: 50,
                 alignment: Alignment.center,
                 decoration: BoxDecoration(
-                  color: const Color(0xff23DD67),
+                  color: Colors.red,
                 ),
                 child: Text(
                   'skip'.tr(),
@@ -69,5 +72,11 @@ class FingerprintSetup extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  void speak() async {
+    locator<SpeechService>().speak("setup_fingerprint_now".tr());
+    await Future.delayed(Duration(seconds: 2));
+    locator<SpeechService>().speak("touch_your_finer_at_the_back".tr());
   }
 }

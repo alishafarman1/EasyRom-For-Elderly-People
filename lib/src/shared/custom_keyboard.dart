@@ -173,7 +173,7 @@ class _CustomKeyboardState extends State<CustomKeyboard> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 380,
+      height: 350,
       child: Stack(
         children: [
           Column(
@@ -219,10 +219,10 @@ class _CustomKeyboardState extends State<CustomKeyboard> {
   }
 
   Container navigationButtons() => Container(
-        margin: EdgeInsets.only(bottom: 20),
+        margin: EdgeInsets.only(bottom: 10),
         width: 100,
         decoration: BoxDecoration(
-            color: Color(0xFF249FFF), borderRadius: BorderRadius.circular(10)),
+            color: Colors.black, borderRadius: BorderRadius.circular(10)),
         padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
         child: Row(children: [
           Expanded(

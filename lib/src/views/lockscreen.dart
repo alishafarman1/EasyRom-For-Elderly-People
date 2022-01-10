@@ -1,6 +1,5 @@
 import 'dart:ui' as ui;
-
-import 'package:easy_rom_prototype/generated/images.asset.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 class Lockscreen extends StatelessWidget {
@@ -11,43 +10,55 @@ class Lockscreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var blur = 10.0;
-    return new Container(
-      width: MediaQuery.of(context).size.width,
-      //I blured the parent container to blur background image, you can get rid of this part
-      child: new BackdropFilter(
-        filter: new ui.ImageFilter.blur(sigmaX: blur, sigmaY: blur),
-        child: new Container(
-          //you can change opacity with color here(I used black) for background.
-          decoration: new BoxDecoration(color: Colors.white.withOpacity(0.5)),
-          child: Column(
-            children: [
-              SizedBox(height: 50),
-              Text(
-                '12 : 00 AM',
-                style: TextStyle(
-                  fontFamily: 'Poppins',
-                  fontSize: 32,
-                  color: const Color(0xff000000),
-                  fontWeight: FontWeight.w700,
+    return GestureDetector(
+      onTap: () => onUnlock(),
+      child: new Container(
+        width: MediaQuery.of(context).size.width,
+        //I blured the parent container to blur background image, you can get rid of this part
+        child: new BackdropFilter(
+          filter: new ui.ImageFilter.blur(sigmaX: blur, sigmaY: blur),
+          child: new Container(
+            //you can change opacity with color here(I used black) for background.
+            decoration: new BoxDecoration(color: Colors.white.withOpacity(0.5)),
+            child: Column(
+              children: [
+                SizedBox(height: 50),
+                Text(
+                  '12 : 00 AM',
+                  style: TextStyle(
+                    fontFamily: 'Poppins',
+                    fontSize: 32,
+                    color: const Color(0xff000000),
+                    fontWeight: FontWeight.w700,
+                  ),
+                  textAlign: TextAlign.left,
                 ),
-                textAlign: TextAlign.left,
-              ),
-              Text(
-                'sunday 7 2021',
-                style: TextStyle(
-                  fontFamily: 'Poppins',
-                  fontSize: 19,
-                  color: const Color(0xff249fff),
-                  fontWeight: FontWeight.w500,
+                Text(
+                  'sunday 7 2021',
+                  style: TextStyle(
+                    fontFamily: 'Poppins',
+                    fontSize: 19,
+                    color: const Color(0xff249fff),
+                    fontWeight: FontWeight.w500,
+                  ),
+                  textAlign: TextAlign.left,
                 ),
-                textAlign: TextAlign.left,
-              ),
-              Spacer(),
-              GestureDetector(
-                  child: Image.asset(Images.biometric),
-                  onTap: () => onUnlock()),
-              SizedBox(height: 100)
-            ],
+                Spacer(),
+                Container(
+                  width: 150,
+                  height: 150,
+                  child: Text(
+                    "unlock_screen".tr(),
+                    style: TextStyle(color: Colors.white, fontSize: 30),
+                  ),
+                  alignment: Alignment.center,
+                  decoration: BoxDecoration(
+                      color: Colors.blue,
+                      borderRadius: BorderRadius.circular(75)),
+                ),
+                SizedBox(height: 100)
+              ],
+            ),
           ),
         ),
       ),

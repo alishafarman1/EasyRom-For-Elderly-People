@@ -1,3 +1,5 @@
+import 'package:easy_rom_prototype/src/configs/app_setup.locator.dart';
+import 'package:easy_rom_prototype/src/services/local/speech_service.dart';
 import 'package:easy_rom_prototype/src/shared/app_text_field.dart';
 import 'package:easy_rom_prototype/src/shared/custom_keyboard.dart';
 import 'package:flutter/material.dart';
@@ -71,8 +73,10 @@ class _MessagesAppState extends State<MessagesApp> {
   void _send() {
     messages.add(_controller.text);
     _controller.clear();
+    locator<SpeechService>().speak("sent".tr());
     setState(() {
       (() async {
+        //sent
         await Future.delayed(Duration(milliseconds: 100));
         _scrollController.animateTo(
           _scrollController.position.maxScrollExtent,

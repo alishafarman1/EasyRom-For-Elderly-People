@@ -40,9 +40,24 @@ class PasswordScreen extends StatelessWidget {
             AppTextField(
                 controller: _controller,
                 placeholder: "tap_to_enter_password".tr()),
-            ElevatedButton(
-                onPressed: NavService.rePasswordScreen,
-                child: Text("next".tr())),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                ElevatedButton(
+                    style: ButtonStyle(
+                        backgroundColor: MaterialStateProperty.all(Colors.red)),
+                    onPressed: () {
+                      locator<SpeechService>()
+                          .speak("welcome_to_new_phone".tr());
+                      NavService.launcher();
+                    },
+                    child: Text("skip".tr())),
+                SizedBox(width: 50),
+                ElevatedButton(
+                    onPressed: NavService.rePasswordScreen,
+                    child: Text("next".tr())),
+              ],
+            ),
             SizedBox(height: 0),
             Spacer(),
             CustomKeyboard(controller: _controller)

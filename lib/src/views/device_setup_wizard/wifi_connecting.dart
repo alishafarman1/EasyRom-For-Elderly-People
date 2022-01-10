@@ -23,7 +23,6 @@ class _WifiConnectingState extends State<WifiConnecting> {
     await Future.delayed(Duration(seconds: 6));
     NavService.accountSignIn();
     locator<SpeechService>().speak("Connected to Internet!");
-    locator<SpeechService>().speak("google_account_sin_in".tr());
   }
 
   @override

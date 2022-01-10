@@ -14,6 +14,7 @@ class AccountSignIn extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    locator<SpeechService>().speak("google_account_sin_in".tr());
     //return KeyboardDemo();
     return Scaffold(
       resizeToAvoidBottomInset: false,
@@ -39,15 +40,26 @@ class AccountSignIn extends StatelessWidget {
             AppTextField(
                 controller: _controller,
                 placeholder: "tap_to_enter_gmail_id".tr()),
-            ElevatedButton(
-                onPressed: () async {
-                  NavService.fingerprintSetup();
-                  locator<SpeechService>().speak("setup_fingerprint_now".tr());
-                  await Future.delayed(Duration(seconds: 2));
-                  locator<SpeechService>()
-                      .speak("touch_your_finer_at_the_back".tr());
-                },
-                child: Text("next".tr())),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                ElevatedButton(
+                    style: ButtonStyle(
+                        backgroundColor: MaterialStateProperty.all(Colors.red)),
+                    onPressed: () {
+                      NavService.launcher();
+                      locator<SpeechService>()
+                          .speak("welcome_to_new_phone".tr());
+                    },
+                    child: Text("skip".tr())),
+                SizedBox(width: 50),
+                ElevatedButton(
+                    onPressed: () async {
+                      NavService.fingerprintSetup();
+                    },
+                    child: Text("next".tr()))
+              ],
+            ),
             SizedBox(height: 10),
             Spacer(),
             CustomKeyboard(controller: _controller)

@@ -62,13 +62,13 @@ class ConnectWifi extends StatelessWidget {
             Spacer(),
             Spacer(),
             GestureDetector(
-              onTap: NavService.connectWifi,
+              onTap: NavService.accountSignIn,
               child: Container(
                   width: context.screenSize().width / 2,
                   height: 50,
                   alignment: Alignment.center,
                   decoration: BoxDecoration(
-                    color: const Color(0xff23DD67),
+                    color: Colors.red,
                   ),
                   child: Text(
                     'skip'.tr(),
