@@ -16,6 +16,10 @@ class AppView extends StatelessWidget {
       title: Constants.appTitle,
       debugShowCheckedModeBanner: false,
       onGenerateRoute: NavService.onGenerateRoute,
+      theme: ThemeData(
+          elevatedButtonTheme: ElevatedButtonThemeData(
+              style: ElevatedButton.styleFrom(
+                  textStyle: TextStyle(fontSize: 30)))),
       navigatorKey: NavService.key,
       home: WelcomeView(),
       builder: (context, child) {

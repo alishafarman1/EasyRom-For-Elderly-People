@@ -56,14 +56,25 @@ class _KeyboardDemoState extends State<KeyboardDemo> {
 
 class CustomKeyboard extends StatefulWidget {
   final TextEditingController controller;
+  final bool isDialer;
+  ValueChanged<_CustomKeyboardState>? onInit;
 
-  CustomKeyboard({required this.controller});
+  CustomKeyboard(
+      {required this.controller, this.isDialer = false, this.onInit});
 
   @override
   State<CustomKeyboard> createState() => _CustomKeyboardState();
 }
 
 class _CustomKeyboardState extends State<CustomKeyboard> {
+  @override
+  void initState() {
+    super.initState();
+    if (widget.onInit != null) {
+      widget.onInit!(this);
+    }
+  }
+
   void _insertText(String myText) {
     locator<SpeechService>().speak(myText);
     final text = widget.controller.text;
@@ -81,7 +92,7 @@ class _CustomKeyboardState extends State<CustomKeyboard> {
     );
   }
 
-  void _backspace() {
+  void backspace() {
     final text = widget.controller.text;
     final textSelection = widget.controller.selection;
     final selectionLength = textSelection.end - textSelection.start;
@@ -154,7 +165,7 @@ class _CustomKeyboardState extends State<CustomKeyboard> {
 
   void _textInputHandler(String text) => _insertText(text);
 
-  void _backspaceHandler() => _backspace();
+  void _backspaceHandler() => backspace();
 
   Color keyColor = Colors.black;
   Color bgColor = Colors.grey;
@@ -173,13 +184,23 @@ class _CustomKeyboardState extends State<CustomKeyboard> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 350,
+      height: widget.isDialer ? 500 : 350,
       child: Stack(
         children: [
           Column(
             children: [
               navigationButtons(),
               if (showEmojiPicker) SizedBox(height: 15),
+              if (widget.isDialer)
+                Wrap(
+                  crossAxisAlignment: WrapCrossAlignment.center,
+                  children: [
+                    ...[1, 2, 3, 4, 5, 6, 7, 8, 9]
+                        .map((n) => numPadButton("$n"))
+                        .toList(),
+                    ...["*", "0", "#"].map((n) => numPadButton("$n")).toList()
+                  ],
+                ),
               if (showEmojiPicker)
                 EmojiPicker(
                   indicatorColor: keyColor,
@@ -189,7 +210,7 @@ class _CustomKeyboardState extends State<CustomKeyboard> {
                   },
                 ),
               ...[
-                if (!showEmojiPicker) ...[
+                if (!showEmojiPicker && !widget.isDialer) ...[
                   numRow(),
                   ...List.generate(
                       qwertySet.length,
@@ -204,7 +225,7 @@ class _CustomKeyboardState extends State<CustomKeyboard> {
                                   ))
                               .toList()))
                 ],
-                specialCharsRow()
+                if (!widget.isDialer) specialCharsRow()
               ].map((row) => Expanded(
                     child: Container(
                       color: bgColor,
@@ -217,6 +238,31 @@ class _CustomKeyboardState extends State<CustomKeyboard> {
       ),
     );
   }
+
+  Widget numPadButton(String numb) => Container(
+        alignment: Alignment.center,
+        width: MediaQuery.of(context).size.width / 3,
+        padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+        child: InkWell(
+          splashColor: Colors.green,
+          onTap: () => _textInputHandler(numb),
+          child: Container(
+            width: 80,
+            height: 80,
+            padding: EdgeInsets.symmetric(vertical: 10),
+            decoration: BoxDecoration(
+                color: Colors.black, borderRadius: BorderRadius.circular(40)),
+            alignment: Alignment.center,
+            child: Text(
+              "$numb",
+              style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 32,
+                  fontWeight: FontWeight.bold),
+            ),
+          ),
+        ),
+      );
 
   Container navigationButtons() => Container(
         margin: EdgeInsets.only(bottom: 10),
@@ -309,7 +355,7 @@ class _CustomKeyboardState extends State<CustomKeyboard> {
             color: keyColor,
             flex: 2,
             onBackspace: () {
-              _backspace();
+              backspace();
               locator<SpeechService>().speak("Back Space");
             },
           ),

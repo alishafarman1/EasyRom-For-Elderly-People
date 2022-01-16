@@ -23,4 +23,8 @@ class Images {
   static String get facebook => "assets/images/facebook.png";
   static String get camera => "assets/images/camera.png";
   static String get padlock => "assets/images/padlock.png";
+  static String get clock => "assets/images/clock.png";
+  static String get gallery => "assets/images/gallery.png";
+  static String get torch => "assets/images/torch.png";
+  static String get whatsapp => "assets/images/whatsapp.png";
 }

@@ -84,26 +84,36 @@ class _LauncherState extends State<Launcher> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
-                    Text(
-                      '12 : 00 AM',
-                      style: TextStyle(
-                        fontFamily: 'Poppins',
-                        fontSize: 20,
-                        color: const Color(0xff000000),
-                        fontWeight: FontWeight.w700,
+                    GestureDetector(
+                      onTap: () {
+                        locator<SpeechService>().speak("time_locale".tr());
+                      },
+                      child: Text(
+                        '12 : 00 AM',
+                        style: TextStyle(
+                          fontFamily: 'Poppins',
+                          fontSize: 30,
+                          color: const Color(0xff000000),
+                          fontWeight: FontWeight.w700,
+                        ),
+                        textAlign: TextAlign.left,
                       ),
-                      textAlign: TextAlign.left,
                     ),
                     SizedBox(height: 5),
-                    Text(
-                      'sunday 7 2021' + ("locking_screen".tr()),
-                      style: TextStyle(
-                        fontFamily: 'Poppins',
-                        fontSize: 12,
-                        color: const Color(0xff249fff),
-                        fontWeight: FontWeight.w500,
+                    GestureDetector(
+                      onTap: () {
+                        locator<SpeechService>().speak("date_locate".tr());
+                      },
+                      child: Text(
+                        "date_locate".tr(),
+                        style: TextStyle(
+                          fontFamily: 'Poppins',
+                          fontSize: 22,
+                          color: const Color(0xff249fff),
+                          fontWeight: FontWeight.w700,
+                        ),
+                        textAlign: TextAlign.left,
                       ),
-                      textAlign: TextAlign.left,
                     )
                   ],
                 ),
@@ -124,10 +134,11 @@ class _LauncherState extends State<Launcher> {
           SizedBox(height: 20),
           Row(
             children: [
-              _appIcon("Twitter", Images.twitter,
-                  packageName: "com.twitter.android"),
-              _appIcon("Instagram", Images.instagram,
-                  packageName: "com.instagram.android"),
+              _appIcon("Alarm", Images.clock,
+                  packageName: "com.google.android.deskclock",
+                  padding: EdgeInsets.all(20)),
+              _appIcon("WhatsApp", Images.whatsapp,
+                  packageName: "com.whatsapp", padding: EdgeInsets.all(20)),
               _appIcon("Calculator", Images.calculator,
                   packageName: "com.google.android.calculator"),
             ],
@@ -150,9 +161,7 @@ class _LauncherState extends State<Launcher> {
           Row(
             children: [
               _appIcon("Sms", Images.sms, onTap: NavService.messagesApp),
-              _appIcon("Phone", Images.phone,
-                  onTap: NavService.dialerApp,
-                  packageName: "com.google.android.dialer"),
+              _appIcon("Phone", Images.phone, onTap: NavService.dialerApp),
               _appIcon("Camera", Images.camera,
                   packageName: "com.google.android.GoogleCamera"),
             ],
@@ -161,7 +170,11 @@ class _LauncherState extends State<Launcher> {
         ]),
       );
 
-  Widget _iconCard(String message, Widget child, {Function? onTap}) => Expanded(
+  Widget _iconCard(String message, Widget child,
+          {Function? onTap,
+          EdgeInsets padding =
+              const EdgeInsets.symmetric(vertical: 10, horizontal: 10)}) =>
+      Expanded(
         child: GestureDetector(
           onTap: () {
             locator<SpeechService>().speak(message);
@@ -170,7 +183,7 @@ class _LauncherState extends State<Launcher> {
           child: Container(
             height: 90,
             margin: EdgeInsets.symmetric(horizontal: 5),
-            padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+            padding: padding,
             decoration: BoxDecoration(
               color: const Color(0xfff2f2f2),
             ),
@@ -180,12 +193,16 @@ class _LauncherState extends State<Launcher> {
       );
 
   Widget _appIcon(String appName, String icon,
-          {Function? onTap, String? packageName}) =>
+          {Function? onTap,
+          String? packageName,
+          EdgeInsets padding =
+              const EdgeInsets.symmetric(vertical: 10, horizontal: 10)}) =>
       _iconCard(
           appName == "Lock Screen"
               ? "locking_screen".tr()
               : "opening_app".tr(args: [appName]),
           Image.asset(icon),
+          padding: padding,
           onTap: packageName != null
               ? () {
                   LaunchApp.openApp(androidPackageName: packageName);

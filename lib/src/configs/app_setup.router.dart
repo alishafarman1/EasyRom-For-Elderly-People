@@ -139,7 +139,7 @@ class StackedRouter extends RouterBase {
     },
     DialerApp: (data) {
       return MaterialPageRoute<MaterialRoute<dynamic>>(
-        builder: (context) => const DialerApp(),
+        builder: (context) => DialerApp(),
         settings: data,
       );
     },
