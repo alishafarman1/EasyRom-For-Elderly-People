@@ -54,7 +54,11 @@ class PasswordScreen extends StatelessWidget {
                     child: Text("skip".tr())),
                 SizedBox(width: 50),
                 ElevatedButton(
-                    onPressed: NavService.rePasswordScreen,
+                    onPressed: () {
+                      locator<SpeechService>()
+                          .speak("welcome_to_new_phone".tr());
+                      NavService.launcher();
+                    },
                     child: Text("next".tr())),
               ],
             ),

@@ -55,7 +55,7 @@ class AccountSignIn extends StatelessWidget {
                 SizedBox(width: 50),
                 ElevatedButton(
                     onPressed: () async {
-                      NavService.fingerprintSetup();
+                      NavService.passwordScreen();
                     },
                     child: Text("next".tr()))
               ],

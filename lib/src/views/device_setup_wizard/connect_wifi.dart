@@ -26,7 +26,7 @@ class ConnectWifi extends StatelessWidget {
             ...["Maju Connect", "Home Internet", "Lab Wifi"]
                 .map((wifiName) => GestureDetector(
                       onTap: () {
-                        NavService.wifiConnecting();
+                        NavService.passwordScreen();
                         locator<SpeechService>()
                             .speak("connecting_network".tr(args: [wifiName]));
                       },

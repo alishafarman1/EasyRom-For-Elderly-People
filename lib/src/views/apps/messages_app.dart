@@ -41,7 +41,7 @@ class _MessagesAppState extends State<MessagesApp> {
               Expanded(
                 child: AppTextField(
                     controller: _controller,
-                    placeholder: "tap_to_enter_gmail_id".tr()),
+                    placeholder: "enter_your_message_here".tr()),
               ),
               ElevatedButton(onPressed: _send, child: Text('Send'))
             ],

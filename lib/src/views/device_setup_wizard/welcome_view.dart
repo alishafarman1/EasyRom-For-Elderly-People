@@ -82,7 +82,13 @@ class _WelcomeViewState extends State<WelcomeView> {
                         selectedLang = 0;
                         locator<SpeechService>()
                             .setLanguage(context, Languages.ur_PK);
-                        locator<SpeechService>().speak("selected_urdu".tr());
+                        (() async {
+                          await locator<SpeechService>()
+                              .speak("selected_urdu".tr());
+                          await NavService.insertSim();
+                          await Future.delayed(Duration(milliseconds: 1000));
+                          locator<SpeechService>().speak("insert_sim_now".tr());
+                        })();
                       }),
                       child: Container(
                         height: 50,
@@ -116,7 +122,12 @@ class _WelcomeViewState extends State<WelcomeView> {
                         selectedLang = 1;
                         locator<SpeechService>()
                             .setLanguage(context, Languages.en_US);
-                        locator<SpeechService>().speak("You selected English");
+                        (() async {
+                          await locator<SpeechService>().speak("English".tr());
+                          await NavService.insertSim();
+                          await Future.delayed(Duration(milliseconds: 1000));
+                          locator<SpeechService>().speak("insert_sim_now".tr());
+                        })();
                       }),
                       child: Container(
                           height: 50,

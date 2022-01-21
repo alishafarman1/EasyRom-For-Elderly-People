@@ -76,7 +76,7 @@ class _CustomKeyboardState extends State<CustomKeyboard> {
   }
 
   void _insertText(String myText) {
-    locator<SpeechService>().speak(myText);
+    locator<SpeechService>().speak(myText, shouldForceEn: true);
     final text = widget.controller.text;
     final textSelection = widget.controller.selection;
     final newText = text.replaceRange(
@@ -356,7 +356,7 @@ class _CustomKeyboardState extends State<CustomKeyboard> {
             flex: 2,
             onBackspace: () {
               backspace();
-              locator<SpeechService>().speak("Back Space");
+              locator<SpeechService>().speak("Back Space", shouldForceEn: true);
             },
           ),
           TextKey(

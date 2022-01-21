@@ -25,7 +25,13 @@ class SpeechService {
         Locale(languageTTSstr.split("-")[0], languageTTSstr.split("-")[1]));
   }
 
-  speak(String text) async {
-    await flutterTts.speak(text);
+  speak(String text, {bool shouldForceEn = false}) async {
+    if (shouldForceEn) {
+      await flutterTts.setLanguage("en-US");
+      await flutterTts.speak(text);
+      await flutterTts.setLanguage(languageTTSstr);
+    } else {
+      await flutterTts.speak(text);
+    }
   }
 }
